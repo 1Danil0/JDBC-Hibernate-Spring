@@ -1,15 +1,38 @@
 package com.danilermolenko.spring.project.entity;
 
-import java.util.Objects;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+@Entity
+@Table(name = "addresses")
 public class Address {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "country")
     private String country;
+    @Column(name = "city")
     private String city;
+    @Column(name = "street")
     private String street;
+    @Column(name = "number")
     private int number;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
+    private Employee employee;
 
     public Address() {
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public long getId() {
@@ -63,5 +86,16 @@ public class Address {
     @Override
     public int hashCode() {
         return Objects.hash(id, country, city, street, number);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", number=" + number +
+                '}';
     }
 }

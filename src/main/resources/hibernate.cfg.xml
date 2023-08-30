@@ -10,18 +10,12 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <!-- NOTE that after automapping with IDEA property username and password will delete -->
-        <!--and will be:  Initial SessionFactory failedorg.hibernate.service.spi.ServiceException: Unable to create requested service-->
         <property name="connection.username">bestuser</property>
         <property name="connection.password">bestuser</property>
 
-        <!-- NOTE that after automapping with IDEA property username and password will delete -->
         <mapping class="com.danilermolenko.spring.project.entity.Employee"/>
         <mapping class="com.danilermolenko.spring.project.entity.Address"/>
         <mapping class="com.danilermolenko.spring.project.entity.Project"/>
-        
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
 
     </session-factory>
 </hibernate-configuration>
